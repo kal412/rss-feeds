@@ -1,0 +1,41 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4,
+            { 
+                "ignoredNodes": ["TemplateLiteral"]
+            }
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
+        "no-var": [
+            "error"
+        ],
+        "no-cond-assign": [
+            "error",
+            "always"
+        ],
+        "init-declarations": "off"
+    }
+  }
