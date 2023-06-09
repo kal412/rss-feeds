@@ -5,4 +5,4 @@ export const config = {
     nodeEnv : process.env.ENV_NODE ?? 'development',
     port : process.env.PORT ?? 3000,
     apiKey : process.env.API_KEY ?? ''
-}
+};

@@ -1,28 +1,39 @@
-export const errorFormat = (errors: any[]): string => {
-    let o: any = {};
-    let newErrorData: any[] = [];
+interface ErrorData {
+    title: string;
+    detail: string;
+    source: string;
+    code: string;
+}
 
-    for(let i=0; i < errors.length; i++) {
-        const error: any = errors[i];
+interface Meta {
+    copyright: string;
+    api: {
+        version: string;
+    }
+}
+
+export const errorFormat = (errors: any[]): string => {
+    const o: { meta: Meta; errors: ErrorData[] } = {
+        meta : {
+            copyright: 'Copyright 2023 Kalyan',
+            api: {
+                version: '1.0'
+            }
+        },
+        errors: []
+    };
+
+    for(const element of errors) {
+        const error: any = element;
         
-        let newError = {
+        const newError: ErrorData = {
             title: error.msg,
             detail: error.msg,
             source: "pointer\":\"/data/attributes/"+error.param,
             code: error.param
         };
 
-        newErrorData.push(newError);
+        o.errors.push(newError);
     }
-
-    let meta = {
-        copyright: 'Copyright 2023 Kalyan',
-        api: {
-            version: '1.0'
-        }
-    };
-
-    o.errors = newErrorData;
-    o.meta = meta;
     return JSON.stringify(o);
-}
+};

@@ -7,13 +7,13 @@ import { validationResult } from "express-validator";
 import { errorFormat } from "../errors/errorFormat.js";
 
 export default class RssFeedController {
-    constructor() {}
+    constructor() { /* constructor is empty */ }
 
     async index( req: Request, res: Response ) {
         const { keyword } = req.params;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {  
-            let errorFormatResponse = errorFormat(errors.array());
+            const errorFormatResponse = errorFormat(errors.array());
             return res.status(422).send(JSON.parse(errorFormatResponse));
         }
 

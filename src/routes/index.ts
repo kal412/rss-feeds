@@ -6,7 +6,7 @@ export default class Routes {
     constructor(app: Application) {
         app.get('/', (req: Request, res: Response) => {
             res.json({message: "API working"});
-        })
+        });
 
         app.use('/rss', rssFeedRoutes);
     }

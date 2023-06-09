@@ -1,7 +1,7 @@
 import { Application } from 'express';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-import Routes from './routes/index.js'
+import Routes from './routes/index.js';
 
 export default class Server {
     constructor(app: Application) {
