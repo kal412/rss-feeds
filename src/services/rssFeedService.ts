@@ -12,8 +12,8 @@ class RssFeedService {
             .then(function( response: AxiosResponse ){
                 data = response.data;
             })
-            .catch(function ( error: AxiosError ) {
-                console.log(error);
+            .catch(function ( error: any ) {
+                throw new Error(error);
             });
 
         return data;

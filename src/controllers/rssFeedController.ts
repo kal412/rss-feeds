@@ -26,7 +26,6 @@ export default class RssFeedController {
                 return res.status(404).send(JSON.parse(singleErrorFormat({"param": "error", "mssg": "No data found"})));
             }
         } catch (error: any) {
-            console.log(error);
             return res.status(422).send(JSON.parse(singleErrorFormat({"param": "error", "mssg": "Something went wrong"})));
         }
     }
