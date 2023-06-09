@@ -3,12 +3,19 @@ import { responseFormat } from "../format/responseFormat.js";
 import RssFeedService from "../services/rssFeedService.js";
 import { Request, Response } from "express";
 import { transformRssFeed } from "../transformers/rssFeedTransformer.js";
+import { validationResult } from "express-validator";
+import { errorFormat } from "../errors/errorFormat.js";
 
 export default class RssFeedController {
     constructor() {}
 
     async index( req: Request, res: Response ) {
         const { keyword } = req.params;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {  
+            let errorFormatResponse = errorFormat(errors.array());
+            return res.status(422).send(JSON.parse(errorFormatResponse));
+        }
 
         try {
             const data = await RssFeedService.searchSection(keyword);

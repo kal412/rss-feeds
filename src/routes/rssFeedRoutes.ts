@@ -1,5 +1,6 @@
 import { Router } from "express";
 import RssFeedController from "../controllers/rssFeedController.js";
+import { keywordValidator } from "../validators/keywordValidator.js";
 
 class RssFeedRoutes {
     router = Router();
@@ -10,7 +11,7 @@ class RssFeedRoutes {
     }
 
     intializeRoutes(){
-        this.router.route('/:keyword').get(this.rssFeedController.index);
+        this.router.route('/:keyword').get(keywordValidator,this.rssFeedController.index);
     }
 }
 
